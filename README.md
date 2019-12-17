@@ -22,3 +22,64 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+# myQiita3 DB設計
+
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|email|string|null: false, unique: true|
+|password|string|null: false|
+|nickname|string|null: false|
+### Association
+- has_many :posts
+- has_many :comments
+- has_many :likes
+
+## postsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|image|text||
+|title|string|null: false|
+|content|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- has_many :comments
+- has_many :likes
+- has_many :posts_categorys
+- has_many  :categorys,  through:  :posts_categorys
+
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|post_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :post
+- belongs_to :user
+
+## categorysテーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+### Association
+- has_many :posts_categorys
+- has_many :posts,  through:  :posts_categorys
+
+## posts_categorysテーブル
+|Column|Type|Options|
+|------|----|-------|
+|post_id|integer|null: false, foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :post
+- belongs_to :category
+
+## likesテーブル
+|Column|Type|Opthions|
+|------|----|--------|
+|user_id|integer|null: false, foreign_key: true|
+|post_id|integer|null: false, foreign_key: true|
+- belongs_to :post
+- belongs_to :user
