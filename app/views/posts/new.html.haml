@@ -1,0 +1,11 @@
+= form_with url: posts_path ,local: true do |form| 
+  .new-post
+    = hidden_field_tag :user_id, 1
+    .new-post__title
+      = form.text_field :title ,class:"input",size: 25
+    .new-post__content
+      = form.text_area :content,class:"text-area",size:"24x15"
+    .btn 
+      = form.submit value="送信",class:"btn"
+    -# ,placeholder: 'タイトルを入れてください'
+    -# ,placeholder: '覚えたいこと勉強したことをかいてください'
