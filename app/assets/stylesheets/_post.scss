@@ -14,8 +14,10 @@ $header-right:rgb(4, 126, 41);
 *{
   box-sizing:border-box;
 }
-body{
+.wrapper{
   background-color: rgb(14, 156, 130);
+  height: 100vh;
+  width: 100vw;
   // background-image: ;
 }
 .header {
@@ -37,7 +39,7 @@ body{
   }
   &__right ul{
     float: right;
-    line-height: 27px;
+    line-height: 54px;
     li{
       float: left;
       list-style: none;
@@ -51,11 +53,22 @@ body{
   }
 }
 .contents{
-  &__main{
-    width: 30%;
+  .content{
+    width: 45%;
     margin: 5px 0;
     background-color:rgb(119, 180, 5);
     color:white;
+    box-shadow: 5px 5px 6px #c1ced7;
+    margin-left: 20px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    &:active{
+      box-shadow:none;
+      position: relative;
+      top: 5px;
+      left: 5px;
+    }
   }
   
 }
