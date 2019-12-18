@@ -51,5 +51,11 @@ body{
   }
 }
 .contents{
+  &__main{
+    width: 30%;
+    margin: 5px 0;
+    background-color:rgb(119, 180, 5);
+    color:white;
+  }
   
 }
