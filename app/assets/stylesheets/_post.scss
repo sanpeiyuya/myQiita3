@@ -1,10 +1,55 @@
-.default{
-  width: 100px;
-  height: 100px;
-  background-color:skyblue;
-  text-align: center;
-  font-size: 16px;
-  &:hover{
-    font-size: 24px;
+@mixin a-tag($color){
+  color:white;
+  text-decoration: none;
+  box-shadow:1px 3px darken($color,20%);
+  &:active{
+    box-shadow:none;
+    position: relative;
+    top: 3px;
+    left: 1px;
   }
+}
+$header-logo:rgb(14, 156, 130);
+$header-right:rgb(4, 126, 41);
+*{
+  box-sizing:border-box;
+}
+body{
+  background-color: rgb(14, 156, 130);
+  // background-image: ;
+}
+.header {
+  color:white;
+  width: 100%;
+  background-color: $header-right;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  justify-content: space-between;
+  &__logo{
+    font-size: 36px;
+    padding-left: 5px;
+    height: 54px;
+    a{
+      @include a-tag($header-logo);
+    }
+    
+  }
+  &__right ul{
+    float: right;
+    line-height: 27px;
+    li{
+      float: left;
+      list-style: none;
+      padding: 0 15px;
+      a{
+        font-size: 18px;
+        @include a-tag($header-logo);
+        
+      }
+    }
+  }
+}
+.contents{
+  
 }

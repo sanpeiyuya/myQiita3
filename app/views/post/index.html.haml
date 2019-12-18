@@ -1,2 +1,25 @@
-.default
-  エンジニアになりたいな！
+.header  
+  %h1.header__logo 
+    =link_to("myQiita","#")
+  .header__right
+    %ul  
+      %li  
+        =link_to("新規投稿","#") 
+      %li  
+        =link_to("投稿一覧","#") 
+      %li  
+        =link_to("profile","#") 
+      %li  
+        =link_to("ログイン","#") 
+      %li  
+        =link_to("ログアウト","#") 
+      %li  
+        =link_to("入会","#") 
+.contents
+  - @posts.each do |post|
+    .contents__main
+      .post__title
+        =post.title
+      .post__content
+        =post.content
+
