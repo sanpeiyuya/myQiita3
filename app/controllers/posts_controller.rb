@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   def create
     # binding.pry
     # @post = Post.new(title: params[:title],content: params[:content])
-    @post = Post.new(content:params[:content],title:params[:title],user_id:params[:user_id])
+    @post = Post.new(create_params)
     if @post.save
       redirect_to root_path
     else
@@ -27,9 +27,13 @@ class PostsController < ApplicationController
   end
 
   def update
-    Post.find_by(id: params[:id]).update(introduction_params)
-    redirect_to root_path
+    if Post.find_by(id: params[:id]).update(introduction_params)
+      redirect_to root_path, notice: '更新成功しました'
+    else 
+      render("posts/edit")
+    end
   end
+    
 
   def destroy
     @post = Post.find_by(id: params[:id])
@@ -40,6 +44,10 @@ class PostsController < ApplicationController
 
   private
   def introduction_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content,:user_id)
+  end
+
+  def create_params
+    params.permit(:title, :content,:user_id)
   end
 end
