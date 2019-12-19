@@ -3,3 +3,7 @@
     ="title: #{@post.title}"
   .post__content
     ="本文: #{@post.content}"
+  .post__created-at
+    =@post.created_at
+  .post__menu
+    = link_to("編集", edit_post_path)

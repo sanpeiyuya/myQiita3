@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def new 
-    
+    @post= Post.find_by(id: params[:id])
   end
 
   def create
@@ -20,5 +20,20 @@ class PostsController < ApplicationController
     else
       render 'posts/new'
     end
+  end
+
+  def edit
+    @post = Post.find_by(id: params[:id])
+  end
+
+  def update
+    Post.find_by(id: params[:id]).update(introduction_params)
+    redirect_to root_path
+  end
+
+
+  private
+  def introduction_params
+    params.require(:post).permit(:title, :content)
   end
 end
