@@ -7,3 +7,5 @@
     =@post.created_at
   .post__menu
     = link_to("編集", edit_post_path)
+  .post__menu
+    = link_to("削除", post_path,{method: "delete"})

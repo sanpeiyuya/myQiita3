@@ -31,6 +31,12 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    @post = Post.find_by(id: params[:id])
+    @post.destroy
+    redirect_to root_path
+  end
+
 
   private
   def introduction_params
