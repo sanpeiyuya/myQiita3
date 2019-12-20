@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.order('id DESC').limit(5)
+    @posts = Post.order('id DESC').limit(10)
   end
 
   def show
@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def new 
-    @post= Post.find_by(id: params[:id])
+    @post= Post.new
   end
 
   def create
@@ -16,9 +16,10 @@ class PostsController < ApplicationController
     # @post = Post.new(title: params[:title],content: params[:content])
     @post = Post.new(create_params)
     if @post.save
+      flash[:notice]= "新規投稿完成しました。"
       redirect_to root_path
     else
-      render 'posts/new'
+      render("posts/new")
     end
   end
 
@@ -28,7 +29,8 @@ class PostsController < ApplicationController
 
   def update
     if Post.find_by(id: params[:id]).update(introduction_params)
-      redirect_to root_path, notice: '更新成功しました'
+      flash[:notice] = "投稿を編集しました"
+      redirect_to root_path
     else 
       render("posts/edit")
     end
@@ -38,6 +40,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
+    flash[:notice]="投稿を削除しました"
     redirect_to root_path
   end
 

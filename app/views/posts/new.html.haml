@@ -2,9 +2,9 @@
   .new-post
     = hidden_field_tag :user_id, 1
     .new-post__title
-      = f.text_field :title ,class:"input",size: 25
+      = f.text_field :title ,class:"input",size: 25 ,value:"#{@post.title}"
     .new-post__content
-      = f.text_area :content,class:"text-area",size:"24x15" ,value:"#{@post}"
+      = f.text_area :content,class:"text-area",size:"24x15" ,value:"#{@post.content}"
     .btn 
       = f.submit value="送信",class:"btn"
     -# ,placeholder: 'タイトルを入れてください'

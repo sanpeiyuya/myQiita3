@@ -1,0 +1,12 @@
+
+@import"colors";
+.flash {
+  padding: 10px 0;
+  color: white;
+  background: $skyblue;
+  text-align: center;
+  z-index: 10;
+  width: 100%;
+  border-radius: 0 0 2px 2px;
+  font-size: 14px;
+}

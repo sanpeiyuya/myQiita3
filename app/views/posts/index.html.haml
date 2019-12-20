@@ -17,9 +17,10 @@
         %li  
           =link_to("入会","#") 
   .contents
-    - @posts.each do |post|
-      .content
-        .post__title
-          =link_to "title: #{post.title}","posts/#{post.id}"
-        -# .post__created-at
-        -#   =post.created_at
+    .posts-box
+      - @posts.each do |post|
+        .content
+          .post__title
+            =link_to "title: #{post.title}","posts/#{post.id}"
+          -# .post__created-at
+          -#   =post.created_at
