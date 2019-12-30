@@ -5,7 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Post.all.destroy_all
-Post.create(title: "初めての投稿", content: "初めてでドキドキ", user_id:1 )
-Post.create(title: "sass", content: "使いこなせばとても便利", user_id: 1)
-Post.create(title: "vim", content: "使いこなすと玄人感が出る", user_id: 1)
+User.all.destroy_all
+User.create(name: "松村", email: "hoge@hoge", nickname:"マツ" )
+User.create(name: "三瓶", email: "gorugon@.com", nickname: "エラ")
+User.create(name: "菅井", email: "sugai@kurikuri", nickname: "シチサン")
+User.create(name: "チャン", email: "tyan@hudousan", nickname: "ハイテク")
+User.create(name: "リュウジ", email: "ryuzi@ryuuzi", nickname: "営業")
