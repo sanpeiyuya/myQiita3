@@ -1,5 +1,11 @@
 .wrapper
   =render "shared/header"
+  -if @user.errors.any?
+    .alert.alert-danger
+      %ur
+        -@user.errors.full_messages.each do |message|
+          %li 
+            =message
   .new
     = form_with url: posts_path ,local: true do |f| 
       .new__post
