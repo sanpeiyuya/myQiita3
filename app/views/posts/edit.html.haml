@@ -1,4 +1,12 @@
-=form_with model: @post do |f|
-  = f.text_field :title 
-  = f.text_area :content 
-  = f.submit value="更新",class:"btn"
+=render "shared/header"
+= form_with model: @post ,local: true do |f| 
+  .new__post
+    = hidden_field_tag :user_id, 1
+    .new-post__title
+      %p タイトルを入力してください
+      = f.text_field :title ,class:"input",size: 25 ,value:"#{@post.title}"
+    .new-post__content
+      %p 本文を入力してください
+      = f.text_area :content,class:"text-area",size:"24x15" ,value:"#{@post.content}"
+    .btn 
+      = f.submit value="送信",class:"btn"
