@@ -3,4 +3,14 @@
 =@user.name
 =@user.email
 =@user.nickname
-=link_to("編集",edit_user_path)
+-if @current_user.id ==@user.id
+  =link_to("編集",edit_user_path)
+
+-@posts.each do |post|
+  .post
+    .post_title
+      =post.id
+      =link_to("#{post.title}",post_path(post))
+    .post_content
+      =post.content
+

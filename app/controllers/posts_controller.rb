@@ -1,10 +1,14 @@
 class PostsController < ApplicationController
+  before_action :set_current_user
+  before_action :authenticate_user,except:[:index,:show]
+  before_action :ensure_correct_post,only:[:edit,:update,:destroy]
   def index
     @posts = Post.order('id DESC').limit(10)
   end
 
   def show
     @post = Post.find_by(id: params[:id])
+    @user = User.find_by(id: @post.user_id)
   end
 
   def new 
@@ -44,6 +48,12 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def ensure_correct_post
+    @post=Post.find_by(id: params[:id])
+    if @current_user.id != @post.user_id
+      redirect_to root_path,notice:"他の人の投稿です"
+    end
+  end
 
   private
   def introduction_params
