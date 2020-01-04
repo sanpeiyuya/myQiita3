@@ -1,4 +1,5 @@
+=render "shared/header"
 -@users.each do |user|
   %ul
     %li 
-      =link_to "#{user.name}",user_path(user)
+      =link_to"#{user.name}",user_path(user)

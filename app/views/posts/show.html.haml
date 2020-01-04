@@ -1,11 +1,14 @@
+=render "shared/header"
 .content
   .post__title
+    =image_tag "#{@user.user_image}", size: "80x100"
     ="title: #{@post.title}"
   .post__content
     ="本文: #{@post.content}"
   .post__created-at
     =@post.created_at
-  .post__menu
-    = link_to("編集", edit_post_path)
-  .post__menu
-    = link_to("削除", post_path,{method: "delete"})
+  -if @current_user.id == @post.user_id
+    .post__menu
+      = link_to("編集", edit_post_path)
+    .post__menu
+      = link_to("削除", post_path,{method: "delete"})

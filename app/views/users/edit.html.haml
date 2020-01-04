@@ -1,0 +1,23 @@
+=render "shared/header"
+%h1 編集画面
+-if @user.errors.any?
+  .alert.alert-danger
+    %ul
+      -@user.errors.full_messages.each do |message|
+        %li 
+          =message
+= form_with model:@user, local: true do |f|
+  .new__post
+    .new-post__title
+      名前
+      = f.text_field :name ,class:"input",size: 25 ,value:"#{@user.name}"
+    .new-post__content
+      email
+      = f.email_field :email,class:"text-area",size:"24x15" ,value:"#{@user.email}"
+    .new-post__content
+      ニックネーム
+      = f.text_field :nickname,class:"text-area",size:"24x15" ,value:"#{@user.nickname}"
+    .new-post__content
+      =f.file_field :user_image
+    .btn 
+      = f.submit value="送信",class:"btn"

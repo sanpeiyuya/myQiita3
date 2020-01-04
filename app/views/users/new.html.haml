@@ -1,0 +1,24 @@
+=render "shared/header"
+%h1 新規登録
+-if @user.errors.any?
+  .alert.alert-danger
+    %ul
+      -@user.errors.full_messages.each do |message|
+        %li 
+          =message
+= form_with model:@user, local: true do |f|
+  .new__post
+    .new-post__title
+      = f.hidden_field :user_image,value:"default_user.jpg"
+      %p 名前を入力してください
+      = f.text_field :name ,class:"input",size: "24x15" ,value:"#{@user.name}"
+    .new-post__content
+      %p emailを入力してください
+      = f.email_field :email,class:"text-area",size:"24x15" ,value:"#{@user.email}"
+    .new-post__content
+      %p ニックネームを入力してください
+      = f.text_field :nickname,class:"text-area",size:"24x15" ,value:"#{@user.nickname}"
+      %p passwordを入力してください
+      = f.password_field :password,type:"password",size:"24x15",value:"#{@user.password}"
+    .btn 
+      = f.submit value="送信",class:"btn"

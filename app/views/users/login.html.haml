@@ -1,0 +1,9 @@
+=form_with url:log_in_users_path ,local: true do |f|
+  -if @error_message
+    =@error_message
+  %p メールアドレス
+  = f.email_field :email,value:@email
+  %p password
+  = f.password_field :password,value:@password
+  .btn 
+    = f.submit value="送信",class:"btn"
