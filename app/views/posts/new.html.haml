@@ -9,7 +9,7 @@
   .new
     = form_with model: @post ,local: true do |f| 
       .new__post
-        = f.hidden_field :user_id,value:"1"
+        = f.hidden_field :user_id,value:@current_user.id
         .new-post__title
           %p タイトルを入力してください
           = f.text_field :title ,class:"input",size: 25 ,value:"#{@post.title}"

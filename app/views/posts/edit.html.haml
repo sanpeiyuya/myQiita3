@@ -1,7 +1,7 @@
 =render "shared/header"
 = form_with model: @post ,local: true do |f| 
   .new__post
-    = hidden_field_tag :user_id, 1
+    = hidden_field_tag :user_id,value:@current_user.id
     .new-post__title
       %p タイトルを入力してください
       = f.text_field :title ,class:"input",size: 25 ,value:"#{@post.title}"

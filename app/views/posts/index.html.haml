@@ -3,9 +3,10 @@
   =render "shared/header"
   .contents
     .posts-box
-      - @posts.each do |post|
+      -@posts.each do |post|
         .content
           .post__title
+            
             =link_to "title: #{post.title}",post_path(post)
           -# .post__created-at
           -#   =post.created_at
