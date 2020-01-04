@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 User.all.destroy_all
-User.create(name: "松村", email: "hoge@hoge", nickname:"マツ" )
-User.create(name: "三瓶", email: "gorugon@.com", nickname: "エラ")
-User.create(name: "菅井", email: "sugai@kurikuri", nickname: "シチサン")
-User.create(name: "チャン", email: "tyan@hudousan", nickname: "ハイテク")
-User.create(name: "リュウジ", email: "ryuzi@ryuuzi", nickname: "営業")
+User.create(name: "松村", email: "hoge@hoge", nickname:"マツ",password:"gorugon",user_image:"default_user.jpg" )
+User.create(name: "三瓶", email: "gorugon@.com", nickname: "エラ",password:"gorugon",user_image:"default_user.jpg")
+User.create(name: "菅井", email: "sugai@kurikuri", nickname: "シチサン",password:"gorugon",user_image:"default_user.jpg")
+User.create(name: "チャン", email: "tyan@hudousan", nickname: "ハイテク",password:"gorugon",user_image:"default_user.jpg")
+User.create(name: "リュウジ", email: "ryuzi@ryuuzi", nickname: "営業",password:"gorugon",user_image:"default_user.jpg")
