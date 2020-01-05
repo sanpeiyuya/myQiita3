@@ -1,14 +1,15 @@
 class PostsController < ApplicationController
-  before_action :set_current_user
   before_action :authenticate_user,except:[:index,:show]
   before_action :ensure_correct_post,only:[:edit,:update,:destroy]
   def index
-    @posts = Post.order('id DESC').limit(10)
+    @posts = Post.order('id DESC').limit(10).page(params[:page]).per(7)
   end
 
   def show
     @post = Post.find_by(id: params[:id])
     @user = User.find_by(id: @post.user_id)
+    @like =Like.find_by(post_id: @post.id)
+    @likecount = Like.where(post_id: @post.id).count
   end
 
   def new 
