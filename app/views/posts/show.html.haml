@@ -7,6 +7,13 @@
     ="本文: #{@post.content}"
   .post__created-at
     =@post.created_at
+  .post__menu
+    -if Like.find_by(user_id: @current_user.id,post_id:@post.id)
+      =link_to(post_like_path(@post.likes),{method: "delete"},class:"heart")do
+        =icon('fas','heart')
+      =@likecount
+    -else
+      =link_to("いいね！",post_likes_path(@post),{method: "post"})
   -if @current_user.id == @post.user_id
     .post__menu
       = link_to("編集", edit_post_path)

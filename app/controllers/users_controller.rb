@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :set_current_user
   before_action :authenticate_user,only:[:index,:show,:edit,:update]
   before_action :ensure_correct_user,only:[:edit,:update]
   def index
@@ -64,6 +63,11 @@ class UsersController < ApplicationController
     if @current_user.id != params[:id].to_i
       redirect_to root_path,notice:"権限がありません"
     end
+  end
+
+  def likes
+    @user =User.find_by(id: params[:id])
+    @likes=Like.where(user_id: @user.id)
   end
 
   private

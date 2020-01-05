@@ -4,12 +4,17 @@ Rails.application.routes.draw do
   get"/users/login"=>"users/login"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # get "posts/:id" => "posts#show"
-  resources :posts
+  resources :posts do
+    resources :likes,only:[:create,:destroy]
+  end
   resources :users do
     collection do
       get "login"
       post "log_in"
       post "logout"
+    end
+    member do
+      get "likes"
     end
   end
 end

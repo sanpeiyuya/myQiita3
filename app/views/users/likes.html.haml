@@ -1,0 +1,9 @@
+=render "shared/header"
+-@likes.each do |like|
+  -@post= Post.find_by(id: like.post_id)
+  =image_tag "#{@post.user.user_image}", size: "80x100"
+  .user
+    .user__name
+      =link_to(@post.user.nickname,user_path(@post.user.id))
+    .user__like-post
+      =link_to(@post.content,post_path(@post.id))
