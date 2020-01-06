@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user,except:[:index,:show]
   before_action :ensure_correct_post,only:[:edit,:update,:destroy]
   def index
-    @posts = Post.order('id DESC').limit(10).page(params[:page]).per(7)
+    @posts = Post.includes(:user).order('id DESC').limit(10).page(params[:page]).per(7)
   end
 
   def show
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find_by(id: params[:id])
-    @post.destroy
+    @post.destroy if @post.user_id == @current_user.id
     flash[:notice]="投稿を削除しました"
     redirect_to root_path
   end

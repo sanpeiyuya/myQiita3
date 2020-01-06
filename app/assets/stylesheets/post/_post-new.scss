@@ -1,6 +1,10 @@
 .input{
   // background-color: rgb(25, 168, 94);
   color: rgb(138, 18, 88);
+  width: 100%;
+}
+.text-area{
+  width: 100%;
 }
 .btn{
   width: 50px;
@@ -11,5 +15,9 @@
 .new{
   &__post{
     margin-left: 60px;
+    width: 400px;
+    &__title{
+      width: 400px;
+    }
   }
 }

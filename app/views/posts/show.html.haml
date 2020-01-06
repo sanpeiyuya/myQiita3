@@ -1,5 +1,8 @@
 =render "shared/header"
 .content
+  .user-name
+    %p投稿者
+    ="#{@user.nickname}さん"
   .post__title
     =image_tag "#{@user.user_image}", size: "80x100"
     ="title: #{@post.title}"
