@@ -2,7 +2,7 @@
 .content
   .user-name
     %p投稿者
-    ="#{@user.nickname}さん"
+    =link_to "#{@user.nickname}さんの投稿一覧はこちら",user_path(@user)
   .post__title
     =image_tag "#{@user.user_image}", size: "80x100"
     ="title: #{@post.title}"
@@ -10,6 +10,11 @@
     ="本文: #{@post.content}"
   .post__created-at
     =@post.created_at
+  -if @current_user.id == @post.user_id
+    .post__menu
+      = link_to("編集", edit_post_path)
+    .post__menu
+      = link_to("削除", post_path,{method: "delete"})
   .post__menu
     -if Like.find_by(user_id: @current_user.id,post_id:@post.id)
       =link_to(post_like_path(@post.likes),{method: "delete"},class:"heart")do
@@ -17,8 +22,25 @@
       =@likecount
     -else
       =link_to("いいね！",post_likes_path(@post),{method: "post"})
-  -if @current_user.id == @post.user_id
-    .post__menu
-      = link_to("編集", edit_post_path)
-    .post__menu
-      = link_to("削除", post_path,{method: "delete"})
+    -if @current_user
+      =form_with url:post_comments_path(@post),local:true do|f|
+        .comment
+          .comment__form
+            %p コメント記入欄
+            .comment__form__text
+              = f.text_area :text,placeholder:"コメントを記入してください"
+          .btn 
+            = f.submit value="送信",class:"btn"
+    -if @comments 
+      .comments
+        %p コメント一覧
+        -@comments .each do |comment|
+          .comments__list
+            .comments__list__contributor
+              =link_to comment.user.nickname,user_path(comment.user_id)
+            .comments__list__text
+              =comment.text
+            -if comment.user_id == @current_user.id
+              .comments__list__delete
+                =link_to(post_comment_path(@post,comment.id),{method:"delete"},class:"comments__list__delete__icon") do
+                  =icon('fas','trash')
