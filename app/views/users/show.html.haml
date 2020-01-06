@@ -3,9 +3,6 @@
 =@user.name
 =@user.email
 =@user.nickname
--if @current_user.id ==@user.id
-  =link_to("編集",edit_user_path)
-  =link_to("いいね",likes_user_path(@user.id))
 -@posts.each do |post|
   .post
     .post_title
@@ -13,4 +10,6 @@
       =link_to("#{post.title}",post_path(post))
     .post_content
       =post.content
-
+-if @current_user.id ==@user.id
+  =link_to("編集",edit_user_path)
+  =link_to("いいね",likes_user_path(@user.id))
