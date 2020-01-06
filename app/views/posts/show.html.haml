@@ -17,7 +17,7 @@
       = link_to("削除", post_path,{method: "delete"})
   .post__menu
     -if Like.find_by(user_id: @current_user.id,post_id:@post.id)
-      =link_to(post_like_path(@post.likes),{method: "delete"},class:"heart")do
+      =link_to(post_like_path(@post),{method: "delete"},class:"heart")do
         =icon('fas','heart')
       =@likecount
     -else
