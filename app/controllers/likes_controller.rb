@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   def create
-    @like =Like.new(user_id: @current_user.id ,post_id: params[:post_id])
+    @like =Like.new(likes_params)
     @like.save
     redirect_to post_path(params[:post_id]) ,notice:"いいね！"
   end
@@ -10,8 +10,8 @@ class LikesController < ApplicationController
     @like.destroy
     redirect_to post_path(params[:post_id])  ,notice:"いいねを削除しました"
   end
-  # private
-  # def likes_params
-  #   params.require(:like).permit(:user_id, :post_id)
-  # end
+  private
+  def likes_params
+    params.permit(:post_id).merge(user_id: @current_user.id)
+  end
 end
