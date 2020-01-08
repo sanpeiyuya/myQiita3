@@ -30,6 +30,7 @@ Things you may want to cover:
 |email|string|null: false, uniqueness: true|
 |password|string|null: false|
 |nickname|string|null: false|
+|name|string|presence: true|
 ### Association
 - has_many :posts
 - has_many :comments
