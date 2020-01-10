@@ -47,8 +47,8 @@ Things you may want to cover:
 - belongs_to :user
 - has_many :comments
 - has_many :likes
-- has_many :posts_categorys
-- has_many  :categorys,  through:  :posts_categorys
+- has_many :posts_tags
+- has_many  :categorys,  through:  :posts_tags
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -60,22 +60,22 @@ Things you may want to cover:
 - belongs_to :post
 - belongs_to :user
 
-## categorysテーブル
+## tagsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
 ### Association
-- has_many :posts_categorys
-- has_many :posts,  through:  :posts_categorys
+- has_many :posts_tags
+- has_many :posts,  through:  :posts_tags
 
-## posts_categorysテーブル
+## posts_tagsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |post_id|integer|null: false, foreign_key: true|
 |category_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :post
-- belongs_to :category
+- belongs_to :tag
 
 ## likesテーブル
 |Column|Type|Opthions|
