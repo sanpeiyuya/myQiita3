@@ -5,4 +5,6 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :delete_all
   has_many :comments, dependent: :delete_all
+  has_many :posts_tags,dependent: :destroy
+  has_many :tags, through: :posts_tags
 end
