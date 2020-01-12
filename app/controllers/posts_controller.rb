@@ -11,6 +11,7 @@ class PostsController < ApplicationController
     @like =Like.find_by(post_id: @post.id)
     @likecount = Like.where(post_id: @post.id).count
     @comments = @post.comments.includes(:user)
+    @tags =@post.tags
   end
 
   def new 
@@ -59,10 +60,10 @@ class PostsController < ApplicationController
 
   private
   def introduction_params
-    params.require(:post).permit(:title, :content,:user_id)
+    params.require(:post).permit(:title, :content,:user_id,:all_tags)
   end
 
   def create_params
-    params.require(:post).permit(:title, :content,:user_id)
+    params.require(:post).permit(:title, :content,:user_id,:all_tags)
   end
 end

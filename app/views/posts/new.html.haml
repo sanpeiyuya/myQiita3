@@ -11,11 +11,14 @@
       .new__post
         = f.hidden_field :user_id,value:@current_user.id
         .new-post__title
-          %p タイトルを入力してください
+          = f.label :タイトル
           = f.text_field :title ,class:"input",size: 25 ,value:"#{@post.title}"
         .new-post__content
-          %p 本文を入力してください
+          = f.label :本文
           = f.text_area :content,class:"text-area",size:"24x15" ,value:"#{@post.content}"
+        .new-post__tags
+          = f.label :all_tags
+          = f.text_field :all_tags,size: 25
         .btn 
           = f.submit value="送信",class:"btn"
         -# ,placeholder: 'タイトルを入れてください'
