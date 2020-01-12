@@ -5,6 +5,11 @@
     =link_to "#{@user.nickname}さんの投稿一覧はこちら",user_path(@user)
   .post__title
     =image_tag "#{@user.user_image}", size: "80x100"
+  .post__tags
+    ="タグ"
+    -@tags.each do |tag|
+      =link_to(tag.name,root_path)
+  .post__title
     ="title: #{@post.title}"
   .post__content
     ="本文: #{@post.content}"
