@@ -17,35 +17,36 @@
     =@post.created_at
   -if @current_user.id == @post.user_id
     .post__menu
-      = link_to("編集", edit_post_path)
+      = link_to("編集", edit_post_path,class:"hover")
     .post__menu
-      = link_to("削除", post_path,{method: "delete"})
+      = link_to("削除", post_path,method: "delete",class:"hover")
   .post__menu
     -if Like.find_by(user_id: @current_user.id,post_id:@post.id)
-      =link_to(post_like_path(@post),{method: "delete"},class:"heart")do
+      =link_to(post_like_path(@post),method: "delete",class:"heart")do
         =icon('fas','heart')
       =@likecount
     -else
-      =link_to("いいね！",post_likes_path(@post),{method: "post"})
+      =link_to("いいね！",post_likes_path(@post),method: "post",class:"hover")
     -if @current_user
-      =form_with url:post_comments_path(@post),local:true do|f|
-        .comment
+      .comment
+        =form_with url:post_comments_path(@post),local: true,id: "new_comment" do|f|
           .comment__form
             %p コメント記入欄
             .comment__form__text
-              = f.text_area :text,placeholder:"コメントを記入してください"
+              = f.text_area :text,placeholder:"コメントを記入してください",class: "textbox"
           .btn 
-            = f.submit value="送信",class:"btn"
+            = f.submit "送信",class:"btn form__submit send"
     -if @comments 
-      .comments
+      .comments-wrapper
         %p コメント一覧
-        -@comments .each do |comment|
-          .comments__list
-            .comments__list__contributor
-              =link_to comment.user.nickname,user_path(comment.user_id)
-            .comments__list__text
-              =comment.text
-            -if comment.user_id == @current_user.id
-              .comments__list__delete
-                =link_to(post_comment_path(@post,comment.id),{method:"delete"},class:"comments__list__delete__icon") do
+        %ul.comments
+          -@comments .each do |comment|
+            %li
+              .comments__list
+                .comments__list__contributor
+                  =link_to comment.user.nickname,user_path(comment.user_id)
+                .comments__list__text
+                  =comment.text
+              -if comment.user_id == @current_user.id
+                =link_to post_comment_path(@post,comment.id),method:"delete",class:"comments__list__delete__icon",remote:'true' do
                   =icon('fas','trash')
