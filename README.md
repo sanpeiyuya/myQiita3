@@ -22,8 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-# URL
-[http//3.115.218.237](3.115.218.237)
+
 # myQiita3 DB_design
 
 ## users_tables
