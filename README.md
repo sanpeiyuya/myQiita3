@@ -6,7 +6,7 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-
+2.5.1
 * System dependencies
 
 * Configuration
@@ -22,9 +22,11 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-# myQiita3 DB設計
+# URL
+3.115.218.237
+# myQiita3 DB_design
 
-## usersテーブル
+## users_tables
 |Column|Type|Options|
 |------|----|-------|
 |email|string|null: false, uniqueness: true|
@@ -36,7 +38,7 @@ Things you may want to cover:
 - has_many :comments
 - has_many :likes
 
-## postsテーブル
+## posts_tables
 |Column|Type|Options|
 |------|----|-------|
 |image|text||
@@ -50,7 +52,7 @@ Things you may want to cover:
 - has_many :posts_tags
 - has_many  :categorys,  through:  :posts_tags
 
-## commentsテーブル
+## comments_tables
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
@@ -60,7 +62,7 @@ Things you may want to cover:
 - belongs_to :post
 - belongs_to :user
 
-## tagsテーブル
+## tags_tables
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
@@ -68,7 +70,7 @@ Things you may want to cover:
 - has_many :posts_tags
 - has_many :posts,  through:  :posts_tags
 
-## posts_tagsテーブル
+## posts_tags_tables
 |Column|Type|Options|
 |------|----|-------|
 |post_id|integer|null: false, foreign_key: true|
@@ -77,7 +79,7 @@ Things you may want to cover:
 - belongs_to :post
 - belongs_to :tag
 
-## likesテーブル
+## likes_tabeles
 |Column|Type|Opthions|
 |------|----|--------|
 |user_id|integer|null: false, foreign_key: true|
