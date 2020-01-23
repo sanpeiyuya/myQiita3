@@ -22,7 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
+・アドレス <http://3.115.218.237/>  
 # myQiita3 DB_design
 
 ## users_tables
