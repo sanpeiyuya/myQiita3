@@ -85,3 +85,4 @@ Things you may want to cover:
 |post_id|integer|null: false, foreign_key: true|
 - belongs_to :post
 - belongs_to :user
+![ER図](https://www.lucidchart.com/documents/edit/0b5de5d1-b89a-4199-b973-9f54e310269a/0_0?beaconFlowId=D0834A72E2E9E835)
