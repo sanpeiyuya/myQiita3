@@ -15,28 +15,22 @@
     ="本文: #{@post.content}"
   .post__created-at
     =@post.created_at
-  -if @current_user.id == @post.user_id
+  -if@current_user.present? && @current_user.id == @post.user_id 
     .post__menu
       = link_to("編集", edit_post_path,class:"hover")
     .post__menu
       = link_to("削除", post_path,method: "delete",class:"hover")
-  .post__menu
-    -if Like.find_by(user_id: @current_user.id,post_id:@post.id)
-      =link_to(post_like_path(@post),method: "delete",class:"heart")do
-        =icon('fas','heart')
-      =@likecount
-    -else
-      =link_to("いいね！",post_likes_path(@post),method: "post",class:"hover")
-    -if @current_user
-      .comment
-        =form_with url:post_comments_path(@post),local: true,id: "new_comment" do|f|
-          .comment__form
-            %p コメント記入欄
-            .comment__form__text
-              = f.text_area :text,placeholder:"コメントを記入してください",class: "textbox"
-          .btn 
-            = f.submit "送信",class:"btn form__submit send"
-    -if @comments 
+  = render "likes/likes", post: @post
+  -if @current_user
+    .comment
+      =form_with url:post_comments_path(@post),local: true,id: "new_comment" do|f|
+        .comment__form
+          %p コメント記入欄
+          .comment__form__text
+            = f.text_area :text,placeholder:"コメントを記入してください",class: "textbox"
+        .btn 
+          = f.submit "送信",class:"btn form__submit send"
+    -if @comments
       .comments-wrapper
         %p コメント一覧
         %ul.comments

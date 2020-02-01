@@ -25,7 +25,7 @@ Things you may want to cover:
 ・アドレス <http://3.115.218.237/>  
 # myQiita3 DB_design
 
-## users_tables
+## users tables
 |Column|Type|Options|
 |------|----|-------|
 |email|string|null: false, uniqueness: true|
@@ -37,7 +37,7 @@ Things you may want to cover:
 - has_many :comments
 - has_many :likes
 
-## posts_tables
+## posts tables
 |Column|Type|Options|
 |------|----|-------|
 |image|text||
@@ -51,7 +51,7 @@ Things you may want to cover:
 - has_many :posts_tags
 - has_many  :categorys,  through:  :posts_tags
 
-## comments_tables
+## comments tables
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
@@ -61,15 +61,15 @@ Things you may want to cover:
 - belongs_to :post
 - belongs_to :user
 
-## tags_tables
+## tags tables
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false|
+|name|text|null: false|
 ### Association
 - has_many :posts_tags
 - has_many :posts,  through:  :posts_tags
 
-## posts_tags_tables
+## posts_tags tables
 |Column|Type|Options|
 |------|----|-------|
 |post_id|integer|null: false, foreign_key: true|
@@ -78,11 +78,10 @@ Things you may want to cover:
 - belongs_to :post
 - belongs_to :tag
 
-## likes_tabeles
+## likes tabeles
 |Column|Type|Opthions|
 |------|----|--------|
 |user_id|integer|null: false, foreign_key: true|
 |post_id|integer|null: false, foreign_key: true|
 - belongs_to :post
 - belongs_to :user
-![ER図](https://www.lucidchart.com/documents/edit/0b5de5d1-b89a-4199-b973-9f54e310269a/0_0?beaconFlowId=D0834A72E2E9E835)

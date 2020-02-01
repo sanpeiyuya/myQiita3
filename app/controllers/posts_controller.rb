@@ -9,7 +9,6 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     @user = User.find_by(id: @post.user_id)
     @like =Like.find_by(post_id: @post.id)
-    @likecount = Like.where(post_id: @post.id).count
     @comments = @post.comments.includes(:user)
     @tags =@post.tags
   end

@@ -1,0 +1,8 @@
+.post__menu{id: "like-btn-#{post.id}"}
+  - if @current_user.present? && @current_user.already_liked?(post)
+    =link_to post_like_path(post,@like),method: "delete",class:"heart",remote: true do
+      =icon('fas','heart')
+    =post.likes.count
+  -else
+    =link_to "いいね！",post_likes_path(post),method: "post",remote: true
+    =post.likes.count
