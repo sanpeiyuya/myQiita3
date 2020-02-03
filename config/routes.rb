@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'tags/show'
   # get 'users/index'
   root 'posts#index'
   get"/users/login"=>"users/login"
@@ -18,4 +19,5 @@ Rails.application.routes.draw do
       get "likes"
     end
   end
+  resources :tags, only: [:show]
 end

@@ -7,5 +7,14 @@
         .content
           .post__title
             =link_to "title: #{post.title}",post_path(post),data: {"turbolinks" => false}
+          .post__tags
+            -post.tags.each do |tag|
+              =link_to "#{tag.name}","#"
       .paginate
         =paginate(@posts)
+    .tags
+      %p.tags__name
+        タグ一覧
+        -@tags.each do |tag|
+          =link_to "#{tag.id}:#{tag.name}",tag_path(tag)
+    

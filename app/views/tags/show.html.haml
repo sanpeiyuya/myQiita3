@@ -1,0 +1,12 @@
+.wrapper
+  =render "shared/header"
+  .tags-name
+    ="#{@tag.name}の一覧"
+  -@posts.each do|post,v|
+    .posts
+      .post-title
+        =link_to post.title,post_path(post)
+      .post-content
+        =post.content
+      .post-user
+        =link_to post.user.nickname,user_path(post.user)
